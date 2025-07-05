@@ -1,0 +1,5 @@
+---
+- name: Minimal Linux Setup
+  hosts: all
+  roles:
+    - i3-lightdm

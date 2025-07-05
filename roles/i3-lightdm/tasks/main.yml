@@ -1,0 +1,33 @@
+---
+- name: Install i3 and LightDM
+  become: yes
+  ansible.builtin.package:
+    name:
+      - i3
+      - lightdm
+      - rofi
+    state: present
+
+- name: Enable LightDM service
+  become: yes
+  ansible.builtin.service:
+    name: lightdm
+    enabled: yes
+
+- name: Create i3 config directory
+  become: yes
+  ansible.builtin.file:
+    path: /home/xoma/.config/i3
+    state: directory
+    owner: xoma
+    group: xoma
+    mode: '0755'
+
+- name: Template i3 config
+  become: yes
+  ansible.builtin.template:
+    src: i3.config.j2
+    dest: /home/xoma/.config/i3/config
+    owner: xoma
+    group: xoma
+    mode: '0644'

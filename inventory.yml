@@ -1,0 +1,9 @@
+---
+all:
+  hosts:
+    localhost:
+      ansible_host: 127.0.0.1
+      ansible_port: 2022
+      ansible_user: root
+      ansible_connection: ssh
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
