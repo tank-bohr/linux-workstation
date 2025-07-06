@@ -6,6 +6,8 @@
     - sudo
     - basic-stuff
     - i3-lightdm
+    - enlightenment
+    - printers
     - pipewire
     - bluetooth
     - flatpak-gui
@@ -14,3 +16,4 @@
     - kubectl
     - asdf-vm
     - oh-my-zsh
+    - xssproxy

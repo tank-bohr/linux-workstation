@@ -10,6 +10,10 @@
       - gvfs
       - gvfs-backends
       - gnome-keyring
+      # screenshots
+      - maim
+      - scrot
+      - xclip
     state: present
 
 - name: Enable LightDM service

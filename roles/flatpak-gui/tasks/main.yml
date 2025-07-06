@@ -14,6 +14,7 @@
 - name: Install common GUI apps from flathub
   community.general.flatpak:
     name:
+      - com.bitwarden.desktop
       - org.mozilla.firefox
       - org.telegram.desktop
       - com.mattermost.Desktop

@@ -1,0 +1,10 @@
+- name: Install CUPS
+  ansible.builtin.package:
+    name: cups
+    state: present
+
+- name: Add user to the group to have rights to manage printers
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: lpadmin
+    append: yes
