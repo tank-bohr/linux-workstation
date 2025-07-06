@@ -6,5 +6,8 @@
       - curl
       - wget
       - git
+      - autoconf
       - build-essential
+      - libncurses-dev
+      - libssl-dev
     state: present
