@@ -10,6 +10,7 @@
       - gvfs
       - gvfs-backends
       - gnome-keyring
+      - gparted
       - network-manager-gnome
       # screenshots
       - maim
