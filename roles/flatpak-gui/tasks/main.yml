@@ -1,0 +1,28 @@
+---
+- name: Install flatpak
+  ansible.builtin.apt:
+    name:
+      - flatpak
+    state: present
+
+- name: Add flathub remote
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+- name: Install common GUI apps from flathub
+  community.general.flatpak:
+    name:
+      - org.mozilla.firefox
+      - org.telegram.desktop
+      - com.mattermost.Desktop
+
+- name: Install x86_64 specific GUI apps from flathub
+  community.general.flatpak:
+    name:
+      - org.mozilla.Thunderbird
+      - ch.protonmail.protonmail-bridge
+      - com.spotify.Client
+      - us.zoom.Zoom
+  when: ansible_architecture != 'aarch64'

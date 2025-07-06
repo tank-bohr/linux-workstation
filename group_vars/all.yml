@@ -1,0 +1,2 @@
+user: xoma
+home_dir: "/home/{{ user }}"

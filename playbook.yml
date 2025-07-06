@@ -2,4 +2,8 @@
 - name: Minimal Linux Setup
   hosts: all
   roles:
+    - guake
     - i3-lightdm
+    - pipewire
+    - bluetooth
+    - flatpak-gui

@@ -1,0 +1,9 @@
+---
+- name: Install PipeWire packages
+  ansible.builtin.apt:
+    name:
+      - pipewire
+      - pipewire-audio
+      - pipewire-pulse
+      - wireplumber
+    state: present

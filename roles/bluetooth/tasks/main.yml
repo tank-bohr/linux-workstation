@@ -1,0 +1,15 @@
+---
+- name: Install Bluetooth packages
+  ansible.builtin.apt:
+    name:
+      - bluetooth
+      - bluez
+      - bluez-tools
+      - libspa-0.2-bluetooth
+    state: present
+
+- name: Ensure Bluetooth service is running and enabled
+  ansible.builtin.service:
+    name: bluetooth
+    state: started
+    enabled: yes
