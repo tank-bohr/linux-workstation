@@ -1,0 +1,10 @@
+---
+- name: Install basic stuff
+  ansible.builtin.package:
+    name:
+      - vim
+      - curl
+      - wget
+      - git
+      - build-essential
+    state: present
