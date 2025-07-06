@@ -1,5 +1,0 @@
----
-- name: Install Guake
-  ansible.builtin.apt:
-    name: guake
-    state: present

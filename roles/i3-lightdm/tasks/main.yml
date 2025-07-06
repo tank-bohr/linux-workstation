@@ -4,6 +4,7 @@
     name:
       - i3
       - lightdm
+      - guake
       - rofi
       - thunar
       - gvfs

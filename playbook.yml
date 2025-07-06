@@ -3,7 +3,6 @@
   hosts: all
   become: yes
   roles:
-    - guake
     - i3-lightdm
     - pipewire
     - bluetooth
