@@ -2,6 +2,7 @@
 - name: Install basic stuff
   ansible.builtin.package:
     name:
+      - ansible
       - vim
       - curl
       - wget
