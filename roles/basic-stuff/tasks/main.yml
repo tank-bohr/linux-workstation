@@ -7,6 +7,7 @@
       - curl
       - wget
       - git
+      - gnupg
       - autoconf
       - build-essential
       - libncurses-dev

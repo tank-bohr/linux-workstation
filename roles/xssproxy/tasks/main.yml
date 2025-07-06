@@ -14,10 +14,9 @@
     owner: "{{ user }}"
     group: "{{ user }}"
 
-- name: Enable xssproxy service
-  ansible.builtin.systemd_service:
-    name: xssproxy
-    state: started
-    enabled: yes
-    scope: "user"
-    daemon_reload: true
+# - name: Enable xssproxy service
+#   ansible.builtin.systemd_service:
+#     name: xssproxy
+#     state: started
+#     enabled: yes
+#     scope: "user"

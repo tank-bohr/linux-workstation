@@ -43,6 +43,7 @@
   ansible.builtin.git:
     repo: 'https://github.com/maximtrp/randpaper'
     dest: "{{ wallpapers_dir }}/randpaper"
+    update: false
 
 - name: Create api.key file
   copy:
