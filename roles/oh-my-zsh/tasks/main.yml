@@ -1,6 +1,6 @@
 ---
 - name: Install required packages
-  ansible.builtin.apt:
+  ansible.builtin.package:
     update_cache: yes
     name:
       - zsh

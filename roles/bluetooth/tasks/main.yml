@@ -1,6 +1,6 @@
 ---
 - name: Install Bluetooth packages
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name:
       - bluetooth
       - bluez

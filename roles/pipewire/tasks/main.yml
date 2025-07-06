@@ -1,6 +1,6 @@
 ---
 - name: Install PipeWire packages
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name:
       - pipewire
       - pipewire-audio

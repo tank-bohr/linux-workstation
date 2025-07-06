@@ -3,6 +3,7 @@
   hosts: all
   become: yes
   roles:
+    - sudo
     - basic-stuff
     - i3-lightdm
     - pipewire
