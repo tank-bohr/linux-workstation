@@ -28,5 +28,5 @@
       - ch.protonmail.protonmail-bridge
       - com.spotify.Client
       - us.zoom.Zoom
-      - com.sublimetext.three
+      # - com.sublimetext.three
   when: ansible_architecture != 'aarch64'

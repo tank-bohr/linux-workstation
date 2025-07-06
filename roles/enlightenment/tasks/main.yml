@@ -2,7 +2,6 @@
   ansible.builtin.package:
     name:
       - enlightenment
-      - e16-themes
       - terminology
     state: present
   when: "'debian' == ansible_distribution | lower"

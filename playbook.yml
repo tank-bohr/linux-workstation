@@ -11,6 +11,7 @@
     - pipewire
     - bluetooth
     - flatpak-gui
+    - sublime
     - wallpapers
     - docker
     - kubectl
