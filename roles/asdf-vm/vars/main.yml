@@ -1,0 +1,4 @@
+---
+asdf_version: "v0.18.0"
+asdf_url: "https://github.com/asdf-vm/asdf/releases/download/{{ asdf_version }}/asdf-{{ asdf_version }}-linux-{{ current_arch }}.tar.gz"
+asdf_tarball: "{{ home_dir }}/asdf-{{ asdf_version }}.tar.gz"

@@ -1,8 +1,0 @@
----
-asdf_arch_map:
-  x86_64: amd64
-  aarch64: arm64
-asdf_arch: "{{ asdf_arch_map[ansible_architecture] | default(ansible_architecture) }}"
-asdf_version: "v0.18.0"
-asdf_url: "https://github.com/asdf-vm/asdf/releases/download/{{ asdf_version }}/asdf-{{ asdf_version }}-linux-{{ asdf_arch }}.tar.gz"
-asdf_tarball: "{{ home_dir }}/asdf-{{ asdf_version }}.tar.gz"

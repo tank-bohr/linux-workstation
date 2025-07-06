@@ -1,0 +1,17 @@
+- name: Check if asdf is installed
+  stat:
+    path: "/usr/local/bin/asdf"
+  register: asdf_dir
+
+- name: Download asdf binary
+  get_url:
+    url: "{{ asdf_url }}"
+    dest: "{{ asdf_tarball }}"
+    mode: '0755'
+
+- name: Extract asdf binary
+  unarchive:
+    src: "{{ asdf_tarball }}"
+    dest: "/usr/local/bin"
+    remote_src: yes
+    creates: "/usr/local/bin/asdf"

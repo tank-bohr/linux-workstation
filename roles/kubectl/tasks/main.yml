@@ -1,0 +1,13 @@
+---
+- name: Get latest stable kubectl version
+  ansible.builtin.uri:
+    url: https://dl.k8s.io/release/stable.txt
+    return_content: yes
+  register: kubectl_stable_version
+
+- name: Download kubectl binary
+  ansible.builtin.get_url:
+    mode: '0755'
+    dest: "/usr/local/bin/kubectl"
+    url: "https://dl.k8s.io/release/{{ kubectl_stable_version.content }}/bin/linux/{{ current_arch }}/kubectl"
+    checksum: "sha256:https://dl.k8s.io/release/{{ kubectl_stable_version.content }}/bin/linux/{{ current_arch }}/kubectl.sha256"
