@@ -1,22 +1,22 @@
 ---
 - name: Install i3 and LightDM
-  become: yes
   ansible.builtin.package:
     name:
       - i3
       - lightdm
       - rofi
-      - network-manager-applet
+      - thunar
+      - gvfs
+      - gvfs-backends
+      - gnome-keyring
     state: present
 
 - name: Enable LightDM service
-  become: yes
   ansible.builtin.service:
     name: lightdm
     enabled: yes
 
 - name: Create i3 config directory
-  become: yes
   ansible.builtin.file:
     path: "{{ home_dir }}/.config/i3"
     state: directory
@@ -25,7 +25,6 @@
     mode: '0755'
 
 - name: Template i3 config
-  become: yes
   ansible.builtin.template:
     src: i3.config.j2
     dest: "{{ home_dir }}/.config/i3/config"

@@ -17,6 +17,8 @@
       - org.mozilla.firefox
       - org.telegram.desktop
       - com.mattermost.Desktop
+      - com.transmissionbt.Transmission
+      - org.videolan.VLC
 
 - name: Install x86_64 specific GUI apps from flathub
   community.general.flatpak:
@@ -25,4 +27,5 @@
       - ch.protonmail.protonmail-bridge
       - com.spotify.Client
       - us.zoom.Zoom
+      - com.sublimetext.three
   when: ansible_architecture != 'aarch64'

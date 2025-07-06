@@ -1,0 +1,54 @@
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    name:
+      - git
+      - feh
+      - imagemagick
+      - build-essential
+      - python3-requests
+    state: present
+  become: true
+
+- name: Create a Wallpapers directory
+  file:
+    path: "{{ wallpapers_dir }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Create a png directory
+  file:
+    path: "{{ wallpapers_dir }}/png"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Create a jpg directory
+  file:
+    path: "{{ wallpapers_dir }}/sources"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Copy Makefile
+  copy:
+    src: Makefile
+    dest: "{{ wallpapers_dir }}/Makefile"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0644'
+
+- name: Clone randpaper repository
+  ansible.builtin.git:
+    repo: 'https://github.com/maximtrp/randpaper'
+    dest: "{{ wallpapers_dir }}/randpaper"
+
+- name: Create api.key file
+  copy:
+    content: "{{ randpaper_api_key }}"
+    dest: "{{ wallpapers_dir }}/api.key"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0600'
+  no_log: true

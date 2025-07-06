@@ -2,4 +2,7 @@
 
 .PHONY: provision
 provision:
-	ansible-playbook -i inventory.yml playbook.yml
+	ansible-playbook \
+		--inventory inventory.yml \
+		--vault-password-file .vault-password \
+		playbook.yml
