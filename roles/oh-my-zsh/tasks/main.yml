@@ -1,0 +1,53 @@
+---
+- name: Install required packages
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - zsh
+
+- name: Check if oh-my-zsh is installed
+  stat:
+    path: "{{ home_dir }}/.oh-my-zsh"
+  register: oh_my_zsh_dir
+
+- name: Download oh-my-zsh installer
+  get_url:
+    url: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+    dest: "/tmp/oh-my-zsh-install.sh"
+    mode: '0755'
+  when: not oh_my_zsh_dir.stat.exists
+
+- name: Run oh-my-zsh installer
+  shell: "/tmp/oh-my-zsh-install.sh --unattended"
+  become_user: "{{ user }}"
+  args:
+    creates: "{{ home_dir }}/.oh-my-zsh"
+  when: not oh_my_zsh_dir.stat.exists
+
+- name: Template .zshrc
+  template:
+    src: .zshrc.j2
+    dest: "{{ home_dir }}/.zshrc"
+
+- name: Check if asdf is installed
+  stat:
+    path: "/usr/local/bin/asdf"
+  register: asdf_dir
+
+- name: Download asdf binary
+  get_url:
+    url: "{{ asdf_url }}"
+    dest: "{{ asdf_tarball }}"
+    mode: '0755'
+
+- name: Extract asdf binary
+  unarchive:
+    src: "{{ asdf_tarball }}"
+    dest: "/usr/local/bin"
+    remote_src: yes
+    creates: "/usr/local/bin/asdf"
+
+- name: Change user shell to zsh
+  user:
+    name: "{{ user }}"
+    shell: "{{ lookup('pipe', 'which zsh') }}"

@@ -6,3 +6,6 @@ provision:
 		--inventory inventory.yml \
 		--vault-password-file .vault-password \
 		playbook.yml
+
+.venv:
+	python3 -m venv .venv

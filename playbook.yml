@@ -3,8 +3,10 @@
   hosts: all
   become: yes
   roles:
-    - i3-lightdm
-    - pipewire
-    - bluetooth
-    - flatpak-gui
-    - wallpapers
+    # - i3-lightdm
+    # - pipewire
+    # - bluetooth
+    # - flatpak-gui
+    # - wallpapers
+    # - docker
+    - oh-my-zsh

@@ -1,0 +1,25 @@
+---
+- name: Import a docker key from a url
+  ansible.builtin.get_url:
+    url: "{{ docker_key_url }}"
+    dest: "{{ docker_keyring }}"
+
+- name: Add docker repository
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by={{ docker_keyring }}] {{ docker_repo_url }} /"
+    filename: docker
+    state: present
+
+- name: Install containerd and friends
+  ansible.builtin.apt:
+    update_cache: yes
+    name:
+      - containerd.io
+      - docker-ce
+      - docker-ce-cli
+
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: docker
+    append: yes
