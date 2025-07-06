@@ -6,6 +6,7 @@
       - i3
       - lightdm
       - rofi
+      - network-manager-applet
     state: present
 
 - name: Enable LightDM service
