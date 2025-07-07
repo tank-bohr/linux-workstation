@@ -12,6 +12,8 @@
       - gnome-keyring
       - gparted
       - network-manager-gnome
+      - xfce4-power-manager
+      - brightnessctl
       # screenshots
       - maim
       - scrot

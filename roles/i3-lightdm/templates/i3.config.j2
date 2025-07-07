@@ -34,6 +34,7 @@ exec --no-startup-id feh --bg-scale "$(~/Pictures/Wallpapers/random.sh)"
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id guake
+exec --no-startup-id xfce4-power-manager
 
 exec --no-startup-id setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets,ssh,gpg
@@ -50,6 +51,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_AUD
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 
 bindsym Control+Mod1+Right workspace next
 bindsym Control+Mod1+Left  workspace prev
