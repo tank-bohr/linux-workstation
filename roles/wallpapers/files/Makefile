@@ -8,7 +8,7 @@ JPGS := $(wildcard $(SRC_DIR)/*.jpeg)
 PNGS := $(patsubst $(SRC_DIR)/%.jpeg,$(PNG_DIR)/%.png,$(JPGS))
 
 .PHONY: all
-all: download $(PNGS)
+all: $(PNGS)
 
 .PHONY: download
 download:
