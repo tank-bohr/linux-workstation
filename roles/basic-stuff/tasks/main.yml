@@ -24,7 +24,7 @@
     name: "input"
     state: present
 
-- name: Add user to the group to have rights to manage printers
+- name: Add user to the group to retrieve information from devices
   ansible.builtin.user:
     name: "{{ user }}"
     groups: input

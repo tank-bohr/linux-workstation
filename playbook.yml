@@ -4,6 +4,7 @@
   roles:
     - sudo
     - basic-stuff
+    - yay
     - pipewire
     - bluetooth
     - printers

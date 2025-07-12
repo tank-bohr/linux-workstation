@@ -1,0 +1,31 @@
+- set_fact:
+    yay_dir: "{{ home_dir }}/yay-bin"
+
+- name: Clone the repository
+  become: true
+  become_user: "{{ user }}"
+  ansible.builtin.git:
+    repo: 'https://aur.archlinux.org/yay-bin.git'
+    dest: "{{ yay_dir }}"
+    update: false
+
+- set_fact:
+    pkg_ver: 12.5.0-1
+
+- set_fact:
+    pkg: "{{ yay_dir }}/yay-bin-{{ pkg_ver }}-{{ ansible_architecture }}.pkg.tar.zst"
+
+- name: Make the package
+  become: true
+  become_user: "{{ user }}"
+  ansible.builtin.command:
+    argv:
+      - "makepkg"
+      - "--syncdeps"
+    chdir: "{{ yay_dir }}"
+    creates: "{{ pkg }}"
+
+- name: Install the package
+  community.general.pacman:
+    name: "{{ pkg }}"
+    state: present

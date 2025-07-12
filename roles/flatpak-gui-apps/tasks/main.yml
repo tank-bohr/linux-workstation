@@ -24,9 +24,9 @@
 - name: Install x86_64 specific GUI apps from flathub
   community.general.flatpak:
     name:
+      - com.google.Chrome
       - org.mozilla.Thunderbird
       - ch.protonmail.protonmail-bridge
       - com.spotify.Client
       - us.zoom.Zoom
-      # - com.sublimetext.three
   when: ansible_architecture != 'aarch64'
