@@ -23,7 +23,7 @@
     state: present
 
 - name: Greetd config
-  copy:
+  ansible.builtin.copy:
     src: greetd-config.toml
     dest: /etc/greetd/config.toml
 
@@ -32,3 +32,11 @@
     name: greetd
     state: started
     enabled: yes
+
+- name: Hyprland config
+  ansible.builtin.template:
+    src: hyprland.conf.j2
+    dest: "{{ home_dir }}/.config/hypr/hyprland.conf"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0644'
