@@ -7,6 +7,11 @@
       - nvidia-utils
       - egl-wayland
       - hyprland
+      - hypridle
+      - hyprlock
+      - hyprsunset
+      - hyprpolkitagent
+      - brightnessctl
       - xdg-desktop-portal-hyprland
       - xdg-desktop-portal
       - xdg-user-dirs
@@ -16,11 +21,8 @@
       - wofi
       - waybar
       - alacritty
-      - kitty
-      - foot
       - dolphin
       - impala
-      - hyprpaper
       - power-profiles-daemon
       # Login
       - greetd
@@ -52,11 +54,15 @@
 
 - name: Hyprland config
   ansible.builtin.template:
-    src: hyprland.conf.j2
-    dest: "{{ home_dir }}/.config/hypr/hyprland.conf"
+    src: "{{ item }}.conf.j2"
+    dest: "{{ home_dir }}/.config/hypr/{{ item }}.conf"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: '0644'
+  with_items:
+    - hyprland
+    - hypridle
+    - hyprlock
 
 - name: Ensure users dirs
   become: true
