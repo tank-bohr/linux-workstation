@@ -5,6 +5,7 @@
       - pipewire
       - pipewire-audio
       - pipewire-pulse
+      - pamixer
       - pavucontrol
       - playerctl
       - wireplumber

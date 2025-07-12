@@ -6,6 +6,7 @@
       - autoconf
       - base-devel
       - btop
+      - iwd
       - htop
       - curl
       - git
