@@ -4,13 +4,17 @@
   roles:
     - sudo
     - basic-stuff
-    - hyprland
-    - bluetooth
     - pipewire
+    - bluetooth
     - printers
+    - fonts
+    - hyprland
+    - wofi
+    - waybar
     - flatpak-gui-apps
     - oh-my-zsh
     - sublime
     - asdf-vm
+    - docker
     - kubectl
     - wallpapers

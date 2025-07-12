@@ -1,0 +1,72 @@
+- name: Install hyprland and utilities
+  community.general.pacman:
+    name:
+      - noto-fonts
+      - noto-fonts-emoji
+      - noto-fonts-cjk
+      - noto-fonts-extra
+      - ttf-dejavu
+      - ttf-nerd-fonts-symbols
+      - ttf-nerd-fonts-symbols-common
+      - ttf-jetbrains-mono-nerd
+      - ttf-firacode-nerd
+      - ttf-hack-nerd
+    state: present
+
+- name: Create a dirs for custom fonts
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - "{{ home_dir }}/iaFonts"
+    - "{{ home_dir }}/CascadiaFont"
+    - "{{ home_dir }}/.local/share/fonts"
+
+- name: Download CascadiaMono fonts
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip"
+    dest: "{{ home_dir }}/CascadiaFont"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Copy ttf-s
+  ansible.builtin.copy:
+    src: "{{ home_dir }}/CascadiaFont/{{ item }}"
+    dest: "{{ home_dir }}/.local/share/fonts/{{ item }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0644'
+  with_items:
+    - CaskaydiaMonoNerdFont-Regular.ttf
+    - CaskaydiaMonoNerdFont-Bold.ttf
+    - CaskaydiaMonoNerdFont-Italic.ttf
+    - CaskaydiaMonoNerdFont-BoldItalic.ttf
+    - CaskaydiaMonoNerdFontPropo-Regular.ttf
+    - CaskaydiaMonoNerdFontPropo-Bold.ttf
+    - CaskaydiaMonoNerdFontPropo-Italic.ttf
+    - CaskaydiaMonoNerdFontPropo-BoldItalic.ttf
+
+
+- name: Download iA-Fonts fonts
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: "https://github.com/iaolo/iA-Fonts/archive/refs/heads/master.zip"
+    dest: "{{ home_dir }}/iaFonts"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Copy iA font ttf-s
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ home_dir }}/.local/share/fonts"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0644'
+  with_fileglob:
+    - "{{ home_dir }}/iaFonts/iA-Fonts-master/iA Writer Mono/Static/iAWriterMonoS-*.ttf*"
+
+- name: fc-cache
+  ansible.builtin.command: fc-cache

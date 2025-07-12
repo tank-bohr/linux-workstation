@@ -2,7 +2,7 @@
 
 PNG_DIR := png
 SRC_DIR := sources
-RESOLUTION := $(shell xrandr | awk '/\*/ {print $$1; exit}')
+RESOLUTION := 3440x1440
 
 JPGS := $(wildcard $(SRC_DIR)/*.jpeg)
 PNGS := $(patsubst $(SRC_DIR)/%.jpeg,$(PNG_DIR)/%.png,$(JPGS))

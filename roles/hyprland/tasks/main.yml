@@ -14,21 +14,14 @@
       - wayland-utils
       - wl-clipboard
       - wofi
+      - waybar
+      - alacritty
       - kitty
       - foot
-      - guake
       - dolphin
-      - waybar
+      - impala
       - hyprpaper
       - power-profiles-daemon
-      # Fonts
-      - noto-fonts
-      - ttf-dejavu
-      - ttf-nerd-fonts-symbols
-      - ttf-nerd-fonts-symbols-common
-      - ttf-jetbrains-mono-nerd
-      - ttf-firacode-nerd
-      - ttf-hack-nerd
       # Login
       - greetd
       - greetd-tuigreet
@@ -41,29 +34,6 @@
   ansible.builtin.copy:
     src: greetd-config.toml
     dest: /etc/greetd/config.toml
-
-- name: Create waybar config directory
-  file:
-    path: "{{ home_dir }}/.config/waybar"
-    state: directory
-    owner: "{{ user }}"
-    group: "{{ user }}"
-
-# - name: Put waybar styles to enable emoji icons
-#   ansible.builtin.copy:
-#     src: waybar-style.css
-#     dest: "{{ home_dir }}/.config/waybar/style.css"
-#     owner: "{{ user }}"
-#     group: "{{ user }}"
-#     mode: '0644'
-
-- name: Put waybar config
-  ansible.builtin.copy:
-    src: waybar-config.json
-    dest: "{{ home_dir }}/.config/waybar/config"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: '0644'
 
 - name: Enable greetd service
   ansible.builtin.systemd_service:

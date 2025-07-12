@@ -5,11 +5,15 @@
       - ansible
       - autoconf
       - base-devel
+      - btop
+      - htop
       - curl
       - git
       - gnupg
       - less
       - mc
+      - tar
+      - unzip
       - vim
       - wget
     state: present

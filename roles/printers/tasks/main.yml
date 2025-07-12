@@ -1,6 +1,10 @@
 - name: Install CUPS
   community.general.pacman:
-    name: cups
+    name:
+      - cups
+      - cups-pdf
+      - cups-filters
+      - system-config-printer
     state: present
 
 # - name: Add user to the group to have rights to manage printers
