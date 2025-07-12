@@ -5,8 +5,12 @@
     - sudo
     - basic-stuff
     - hyprland
+    - bluetooth
+    - pipewire
+    - printers
     - flatpak-gui-apps
     - oh-my-zsh
     - sublime
     - asdf-vm
     - kubectl
+    - wallpapers

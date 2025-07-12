@@ -1,6 +1,6 @@
 ---
 - name: Install PipeWire packages
-  ansible.builtin.package:
+  community.general.pacman:
     name:
       - pipewire
       - pipewire-audio

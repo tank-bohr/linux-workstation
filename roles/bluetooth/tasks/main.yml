@@ -1,12 +1,10 @@
 ---
 - name: Install Bluetooth packages
-  ansible.builtin.package:
+  community.general.pacman:
     name:
-      - bluetooth
       - bluez
       - bluez-tools
       - blueman
-      - libspa-0.2-bluetooth
     state: present
 
 - name: Ensure Bluetooth service is running and enabled

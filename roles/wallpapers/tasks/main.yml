@@ -1,12 +1,11 @@
 ---
 - name: Install required packages
-  ansible.builtin.package:
+  community.general.pacman:
     name:
       - git
       - feh
       - imagemagick
-      - build-essential
-      - python3-requests
+      - python-requests
     state: present
   become: true
 

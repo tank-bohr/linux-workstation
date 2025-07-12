@@ -15,7 +15,10 @@
       - wl-clipboard
       - wofi
       - foot
+      - guake
       - dolphin
+      - waybar
+      - hyprpaper
       # Fonts
       - noto-fonts
       - ttf-dejavu
