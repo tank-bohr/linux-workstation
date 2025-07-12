@@ -1,15 +1,13 @@
 ---
 - name: Install basic stuff
-  ansible.builtin.package:
+  community.general.pacman:
     name:
       - ansible
-      - vim
+      - autoconf
+      - base-devel
       - curl
-      - wget
       - git
       - gnupg
-      - autoconf
-      - build-essential
-      - libncurses-dev
-      - libssl-dev
+      - vim
+      - wget
     state: present

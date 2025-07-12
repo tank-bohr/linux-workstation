@@ -1,0 +1,34 @@
+---
+- name: Install hyprland and utilities
+  community.general.pacman:
+    name:
+      - nvidia-dkms
+      - nvidia-utils
+      - egl-wayland
+      - hyprland
+      - xdg-desktop-portal-hyprland
+      - xdg-desktop-portal
+      - xdg-user-dirs
+      - xorg-server-xwayland
+      - wayland-utils
+      - wl-clipboard
+      - wofi
+      - foot
+      # Fonts
+      - noto-fonts
+      - ttf-dejavu
+      # Login
+      - greetd
+      - greetd-tuigreet
+    state: present
+
+- name: Greetd config
+  copy:
+    src: greetd-config.toml
+    dest: /etc/greetd/config.toml
+
+- name: Enable greetd service
+  ansible.builtin.systemd_service:
+    name: greetd
+    state: started
+    enabled: yes

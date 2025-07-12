@@ -1,6 +1,6 @@
 ---
 - name: Ensure sudo is installed
-  ansible.builtin.package:
+  community.general.pacman:
     name: sudo
     state: present
     update_cache: yes
@@ -14,5 +14,5 @@
 - name: Ensure user is in sudo group
   ansible.builtin.user:
     name: "{{ user }}"
-    groups: sudo
+    groups: wheel
     append: yes
