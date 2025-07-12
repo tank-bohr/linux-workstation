@@ -2,7 +2,9 @@
 - name: Install Bluetooth packages
   community.general.pacman:
     name:
-      - blueberry
+      - bluez
+      - bluez-tools
+      - blueman
     state: present
 
 - name: Ensure Bluetooth service is running and enabled
