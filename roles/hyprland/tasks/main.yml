@@ -16,6 +16,7 @@
       - xdg-desktop-portal
       - xdg-user-dirs
       - xorg-server-xwayland
+      - gnome-keyring
       - wayland-utils
       - wl-clipboard
       - wofi
