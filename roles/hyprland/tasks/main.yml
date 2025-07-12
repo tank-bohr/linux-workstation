@@ -14,17 +14,27 @@
       - wayland-utils
       - wl-clipboard
       - wofi
+      - kitty
       - foot
       - guake
       - dolphin
       - waybar
       - hyprpaper
+      - power-profiles-daemon
       # Fonts
       - noto-fonts
       - ttf-dejavu
+      - ttf-nerd-fonts-symbols
+      - ttf-nerd-fonts-symbols-common
+      - ttf-jetbrains-mono-nerd
+      - ttf-firacode-nerd
+      - ttf-hack-nerd
       # Login
       - greetd
       - greetd-tuigreet
+      # Screenshots
+      - grim
+      - slurp
     state: present
 
 - name: Greetd config
@@ -32,11 +42,43 @@
     src: greetd-config.toml
     dest: /etc/greetd/config.toml
 
+- name: Create waybar config directory
+  file:
+    path: "{{ home_dir }}/.config/waybar"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+# - name: Put waybar styles to enable emoji icons
+#   ansible.builtin.copy:
+#     src: waybar-style.css
+#     dest: "{{ home_dir }}/.config/waybar/style.css"
+#     owner: "{{ user }}"
+#     group: "{{ user }}"
+#     mode: '0644'
+
+- name: Put waybar config
+  ansible.builtin.copy:
+    src: waybar-config.json
+    dest: "{{ home_dir }}/.config/waybar/config"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0644'
+
 - name: Enable greetd service
   ansible.builtin.systemd_service:
     name: greetd
     state: started
     enabled: yes
+
+# - name: Enable power-profiles-daemon service
+#   become: true
+#   become_user: "{{ user }}"
+#   ansible.builtin.systemd_service:
+#     name: power-profiles-daemon
+#     state: started
+#     enabled: yes
+#     scope: "user"
 
 - name: Hyprland config
   ansible.builtin.template:

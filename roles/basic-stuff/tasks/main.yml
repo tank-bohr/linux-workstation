@@ -9,6 +9,18 @@
       - git
       - gnupg
       - less
+      - mc
       - vim
       - wget
     state: present
+
+- name: Ensure group "input" exists
+  ansible.builtin.group:
+    name: "input"
+    state: present
+
+- name: Add user to the group to have rights to manage printers
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: input
+    append: yes
