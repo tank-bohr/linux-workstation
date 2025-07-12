@@ -2,6 +2,7 @@
 - name: Install hyprland and utilities
   community.general.pacman:
     name:
+      - linux-headers
       - nvidia-dkms
       - nvidia-utils
       - egl-wayland
@@ -14,6 +15,7 @@
       - wl-clipboard
       - wofi
       - foot
+      - dolphin
       # Fonts
       - noto-fonts
       - ttf-dejavu
@@ -40,3 +42,9 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: '0644'
+
+- name: Ensure users dirs
+  become_user: "{{ user }}"
+  ansible.builtin.command: xdg-user-dirs-update
+  args:
+    creates: "{{ home_dir }}/Downloads"

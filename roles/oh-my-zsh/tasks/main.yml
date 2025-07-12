@@ -1,6 +1,6 @@
 ---
 - name: Install required packages
-  ansible.builtin.package:
+  community.general.pacman:
     update_cache: yes
     name:
       - zsh

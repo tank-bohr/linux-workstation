@@ -6,3 +6,6 @@
     - basic-stuff
     - hyprland
     - flatpak-gui-apps
+    - oh-my-zsh
+    - asdf-vm
+    - kubectl
