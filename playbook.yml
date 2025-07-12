@@ -7,5 +7,6 @@
     - hyprland
     - flatpak-gui-apps
     - oh-my-zsh
+    - sublime
     - asdf-vm
     - kubectl

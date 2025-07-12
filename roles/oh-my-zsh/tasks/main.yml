@@ -19,6 +19,7 @@
 
 - name: Run oh-my-zsh installer
   shell: "/tmp/oh-my-zsh-install.sh --unattended"
+  become: true
   become_user: "{{ user }}"
   args:
     creates: "{{ home_dir }}/.oh-my-zsh"

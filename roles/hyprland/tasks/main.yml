@@ -44,6 +44,7 @@
     mode: '0644'
 
 - name: Ensure users dirs
+  become: true
   become_user: "{{ user }}"
   ansible.builtin.command: xdg-user-dirs-update
   args:
