@@ -14,7 +14,7 @@
   register: pkgbuild
 
 - set_fact:
-    pkg_ver: "{{ pkgbuild['content'] | b64decode | regex_search('pkgver=(.+)$', '\\1') | first }}"
+    pkg_ver: "{{ pkgbuild['content'] | b64decode | regex_search('pkgver=(.+)', '\\1') | first }}"
 
 - set_fact:
     pkg: "{{ yay_dir }}/yay-bin-{{ pkg_ver }}-1-{{ ansible_architecture }}.pkg.tar.zst"
