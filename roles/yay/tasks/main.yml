@@ -9,11 +9,15 @@
     dest: "{{ yay_dir }}"
     update: false
 
-- set_fact:
-    pkg_ver: 12.5.0-1
+- ansible.builtin.slurp:
+    src: "{{ yay_dir }}.PKGBUILD"
+  register: pkgbuild
 
 - set_fact:
-    pkg: "{{ yay_dir }}/yay-bin-{{ pkg_ver }}-{{ ansible_architecture }}.pkg.tar.zst"
+    pkg_ver: "{{ pkgbuild['content'] | b64decode | regex_search('pkgver=([\d\.]+)$', '\\1') }}"
+
+- set_fact:
+    pkg: "{{ yay_dir }}/yay-bin-{{ pkg_ver }}-1-{{ ansible_architecture }}.pkg.tar.zst"
 
 - name: Make the package
   become: true
