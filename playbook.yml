@@ -2,6 +2,7 @@
 - name: Minimal Linux Setup
   hosts: all
   roles:
+    - nvidia
     - sudo
     - basic-stuff
     - yay

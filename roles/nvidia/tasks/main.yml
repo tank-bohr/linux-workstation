@@ -1,0 +1,8 @@
+---
+- name: Install packages
+  community.general.pacman:
+    name:
+      - linux-zen-headers
+      - nvidia-open-dkms
+      - nvidia-utils
+    state: present

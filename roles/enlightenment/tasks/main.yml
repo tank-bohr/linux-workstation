@@ -1,7 +1,0 @@
-- name: Install enlightenment
-  ansible.builtin.package:
-    name:
-      - enlightenment
-      - terminology
-    state: present
-  when: "'debian' == ansible_distribution | lower"

@@ -2,29 +2,25 @@
 - name: Install hyprland and utilities
   community.general.pacman:
     name:
-      - linux-headers
-      - nvidia-dkms
-      - nvidia-utils
-      - egl-wayland
-      - hyprland
-      - hypridle
-      - hyprlock
-      - hyprsunset
-      - hyprpolkitagent
+      - alacritty
       - brightnessctl
-      - xdg-desktop-portal-hyprland
-      - xdg-desktop-portal
-      - xdg-user-dirs
-      - xorg-server-xwayland
-      - gnome-keyring
+      - nautilus
+      - egl-wayland
+      - hypridle
+      - hyprland
+      - hyprlock
+      - hyprpolkitagent
+      - hyprsunset
+      - impala
+      - power-profiles-daemon
+      - waybar
       - wayland-utils
       - wl-clipboard
       - wofi
-      - waybar
-      - alacritty
-      - dolphin
-      - impala
-      - power-profiles-daemon
+      - xdg-desktop-portal
+      - xdg-desktop-portal-hyprland
+      - xdg-user-dirs
+      - xorg-server-xwayland
       # Login
       - greetd
       - greetd-tuigreet
@@ -44,15 +40,6 @@
     state: started
     enabled: yes
 
-# - name: Enable power-profiles-daemon service
-#   become: true
-#   become_user: "{{ user }}"
-#   ansible.builtin.systemd_service:
-#     name: power-profiles-daemon
-#     state: started
-#     enabled: yes
-#     scope: "user"
-
 - name: Hyprland config
   ansible.builtin.template:
     src: "{{ item }}.conf.j2"
@@ -64,6 +51,16 @@
     - hyprland
     - hypridle
     - hyprlock
+    - monitors
+    - my-programs
+    - autostart
+    - env-vars
+    - permissions
+    - look-and-feel
+    - input
+    - keybindings
+    - window-rules
+    - workspace-rules
 
 - name: Ensure users dirs
   become: true

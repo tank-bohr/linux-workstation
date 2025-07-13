@@ -4,21 +4,20 @@
     name:
       - wofi
 
-- name: Create config directory
-  file:
-    path: "{{ home_dir }}/.config/wofi"
-    state: directory
-    owner: "{{ user }}"
-    group: "{{ user }}"
+# - name: Create config directory
+#   file:
+#     path: "{{ home_dir }}/.config/wofi"
+#     state: directory
+#     owner: "{{ user }}"
+#     group: "{{ user }}"
 
-
-- name: Put configs
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "{{ home_dir }}/.config/wofi/{{ item }}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: '0644'
-  with_items:
-    - config
-    - omarchy-power-menu.css
+# - name: Put configs
+#   ansible.builtin.copy:
+#     src: "{{ item }}"
+#     dest: "{{ home_dir }}/.config/wofi/{{ item }}"
+#     owner: "{{ user }}"
+#     group: "{{ user }}"
+#     mode: '0644'
+#   with_items:
+#     - config
+#     - omarchy-power-menu.css
