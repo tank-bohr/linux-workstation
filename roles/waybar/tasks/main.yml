@@ -22,3 +22,4 @@
   with_items:
     - config
     - style.css
+    - power_menu.xml
