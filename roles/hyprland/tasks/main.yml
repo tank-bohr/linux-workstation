@@ -40,6 +40,13 @@
     state: started
     enabled: yes
 
+- name: Create config directory
+  file:
+    path: "{{ home_dir }}/.config/hypr"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
 - name: Hyprland config
   ansible.builtin.template:
     src: "{{ item }}.conf.j2"
