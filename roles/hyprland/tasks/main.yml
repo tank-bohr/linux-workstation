@@ -34,9 +34,15 @@
     name: greeter
     shell: "{{ lookup('pipe', 'which bash') }}"
 
+- name: Put regreet config
+  ansible.builtin.template:
+    src: "regreet.toml.j2"
+    dest: "/etc/greetd/regreet.toml"
+    mode: '0644'
+
 - name: Hyprland config for regreet
   ansible.builtin.copy:
-    src: "hyprland.conf"
+    src: "regreet-hyprland.conf"
     dest: "{{ regreet_hypr_config }}"
     mode: '0644'
 
@@ -86,3 +92,11 @@
   ansible.builtin.command: xdg-user-dirs-update
   args:
     creates: "{{ home_dir }}/Downloads"
+
+- name: Put wallpapers
+  copy:
+    src: "wallpapers/{{ item }}"
+    dest: "{{ home_dir }}/Pictures/Wallpapers/{{ item }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items: "{{ wallpapers }}"
