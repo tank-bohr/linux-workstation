@@ -1,0 +1,14 @@
+button.destructive-action {
+    background-color: #d0ecec99;
+    color: #2f4f4f;
+    border-color: #b0dcdc;
+    background-image: none;
+    box-shadow: none;
+}
+
+button.destructive-action:active,
+button.destructive-action:hover {
+    background-color: #c0e0e099;
+    background-image: none;
+    box-shadow: none;
+}

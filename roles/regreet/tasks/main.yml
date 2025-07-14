@@ -14,7 +14,13 @@
 - name: Put regreet config
   ansible.builtin.template:
     src: "regreet.toml.j2"
-    dest: "/etc/greetd/regreet.toml"
+    dest: "{{ config_dir }}/regreet.toml"
+    mode: '0644'
+
+- name: Put styles
+  ansible.builtin.copy:
+    src: "regreet.css"
+    dest: "{{ config_dir }}/regreet.css"
     mode: '0644'
 
 - name: Hyprland config for regreet
@@ -26,7 +32,7 @@
 - name: Greetd config
   ansible.builtin.template:
     src: greetd-config.toml.j2
-    dest: /etc/greetd/config.toml
+    dest: "{{ config_dir }}/config.toml"
 
 - name: Enable greetd service
   ansible.builtin.systemd_service:
