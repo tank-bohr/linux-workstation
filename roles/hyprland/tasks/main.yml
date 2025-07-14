@@ -11,6 +11,8 @@
       - hyprpolkitagent
       - hyprsunset
       - impala
+      - mako
+      - nwg-look
       - power-profiles-daemon
       - waybar
       - wayland-utils
