@@ -23,15 +23,26 @@
       - xorg-server-xwayland
       # Login
       - greetd
-      - greetd-tuigreet
+      - greetd-regreet
       # Screenshots
       - grim
       - slurp
     state: present
 
-- name: Greetd config
+- name: Create greeter user
+  ansible.builtin.user:
+    name: greeter
+    shell: "{{ lookup('pipe', 'which bash') }}"
+
+- name: Hyprland config for regreet
   ansible.builtin.copy:
-    src: greetd-config.toml
+    src: "hyprland.conf"
+    dest: "{{ regreet_hypr_config }}"
+    mode: '0644'
+
+- name: Greetd config
+  ansible.builtin.template:
+    src: greetd-config.toml.j2
     dest: /etc/greetd/config.toml
 
 - name: Enable greetd service
