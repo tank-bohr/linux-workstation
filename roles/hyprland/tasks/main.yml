@@ -3,7 +3,6 @@
   community.general.pacman:
     name:
       - alacritty
-      - brightnessctl
       - nautilus
       - egl-wayland
       - hypridle
@@ -28,34 +27,6 @@
       - grim
       - slurp
     state: present
-
-- name: Create greeter user
-  ansible.builtin.user:
-    name: greeter
-    shell: "{{ lookup('pipe', 'which bash') }}"
-
-- name: Put regreet config
-  ansible.builtin.template:
-    src: "regreet.toml.j2"
-    dest: "/etc/greetd/regreet.toml"
-    mode: '0644'
-
-- name: Hyprland config for regreet
-  ansible.builtin.copy:
-    src: "regreet-hyprland.conf"
-    dest: "{{ regreet_hypr_config }}"
-    mode: '0644'
-
-- name: Greetd config
-  ansible.builtin.template:
-    src: greetd-config.toml.j2
-    dest: /etc/greetd/config.toml
-
-- name: Enable greetd service
-  ansible.builtin.systemd_service:
-    name: greetd
-    state: started
-    enabled: yes
 
 - name: Create config directory
   file:
@@ -92,11 +63,3 @@
   ansible.builtin.command: xdg-user-dirs-update
   args:
     creates: "{{ home_dir }}/Downloads"
-
-- name: Put wallpapers
-  copy:
-    src: "wallpapers/{{ item }}"
-    dest: "{{ home_dir }}/Pictures/Wallpapers/{{ item }}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-  with_items: "{{ wallpapers }}"

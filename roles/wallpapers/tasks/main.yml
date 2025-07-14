@@ -1,0 +1,14 @@
+- name: Ensure directory
+  file:
+    path: "{{ home_dir }}/Pictures/Wallpapers"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Put wallpapers
+  copy:
+    src: "{{ item }}"
+    dest: "{{ home_dir }}/Pictures/Wallpapers/{{ item }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items: "{{ wallpapers }}"

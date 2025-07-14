@@ -1,0 +1,3 @@
+---
+hypr_config: /etc/greetd/hyprland.conf
+background_path: "{{ home_dir }}/Pictures/Wallpapers/pexels-stephane-hurbe-1267753-4065578.png"
