@@ -1,4 +1,5 @@
 ---
 config_dir: "/etc/greetd"
 hypr_config: "{{ config_dir }}/hyprland.conf"
-background_path: "{{ home_dir }}/Pictures/Wallpapers/pexels-stephane-hurbe-1267753-4065578.png"
+background_path: "/usr/share/backgrounds/greeter.jpg"
+background_image: "pexels-stephane-hurbe-1267753-4065578.png"

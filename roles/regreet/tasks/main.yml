@@ -11,6 +11,11 @@
     name: greeter
     shell: "{{ lookup('pipe', 'which bash') }}"
 
+- name: Set the wallpaper
+  ansible.builtin.copy:
+    src: "{{ home_dir }}/Pictures/Wallpapers/{{ background_image }}"
+    dest: "{{ background_path }}"
+
 - name: Put regreet config
   ansible.builtin.template:
     src: "regreet.toml.j2"
