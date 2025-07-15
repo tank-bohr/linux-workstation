@@ -4,42 +4,22 @@
     name:
       - waybar
 
-- name: Fetch dotfiles from Ja.KooLit
-  become: true
-  become_user: "{{ user }}"
-  ansible.builtin.git:
-    repo: 'https://github.com/JaKooLit/Hyprland-Dots.git'
-    dest: "{{ jakoolit_hyprland_dots }}"
-    update: false
-
-- name: Create a symbolic link
-  ansible.builtin.file:
-    src: "{{ jakoolit_hyprland_dots }}/config/waybar"
-    dest: "{{ home_dir }}/.config/waybar"
+- name: Create config directory
+  file:
+    path: "{{ home_dir }}/.config/waybar"
+    state: directory
     owner: "{{ user }}"
     group: "{{ user }}"
-    state: link
 
-- name: Link styles
-  ansible.builtin.file:
-    src: "{{ jakoolit_hyprland_dots }}/config/waybar/style/{{ style }}"
-    dest: "{{ jakoolit_hyprland_dots }}/config/waybar/style.css"
+
+- name: Put configs
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ home_dir }}/.config/waybar/{{ item }}"
     owner: "{{ user }}"
     group: "{{ user }}"
-    state: link
-
-- name: Link config
-  ansible.builtin.file:
-    src: "{{ jakoolit_hyprland_dots }}/config/waybar/configs/{{ config }}"
-    dest: "{{ jakoolit_hyprland_dots }}/config/waybar/config"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    state: link
-
-- name: Link scrips
-  ansible.builtin.file:
-    src: "{{ jakoolit_hyprland_dots }}/config/hypr/scripts"
-    dest: "{{ home_dir }}/.config/hypr/scrips"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    state: link
+    mode: '0644'
+  with_items:
+    - config
+    - style.css
+    - power_menu.xml
