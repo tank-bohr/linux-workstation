@@ -1,0 +1,4 @@
+---
+jakoolit_hyprland_dots: "{{ home_dir }}/jakoolit_hyprland_dots"
+style: '[Retro] Simple Style.css'
+config: '[TOP] Minimal - Long'
