@@ -1,7 +1,6 @@
 ---
-- name: Install containerd and friends
+- name: Install docker and docker-compose
   community.general.pacman:
-    update_cache: yes
     name:
       - docker
       - docker-compose

@@ -13,9 +13,11 @@
     block: |
       [sublime-text]
       Server = https://download.sublimetext.com/arch/stable/x86_64
+  register: pacman_conf
 
 - name: Install Sublime
   community.general.pacman:
     name: sublime-text
     state: present
     update_cache: yes
+  when: pacman_conf is changed

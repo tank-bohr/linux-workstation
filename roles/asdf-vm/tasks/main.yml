@@ -1,9 +1,10 @@
 - name: Check if asdf is installed
   stat:
     path: "/usr/local/bin/asdf"
-  register: asdf_dir
+  register: asdf_bin
 
 - name: Download asdf binary
+  when: not asdf_bin.stat.exists
   get_url:
     url: "{{ asdf_url }}"
     dest: "{{ asdf_tarball }}"
