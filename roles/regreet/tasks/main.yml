@@ -11,6 +11,11 @@
     name: greeter
     shell: "{{ lookup('pipe', 'which bash') }}"
 
+- name: Ensure background dir
+  ansible.builtin.file:
+    path: "{{ background_path | dirname }}"
+    state: directory
+
 - name: Set the wallpaper
   ansible.builtin.copy:
     src: "{{ home_dir }}/Pictures/Wallpapers/{{ background_image }}"
