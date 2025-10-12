@@ -30,8 +30,8 @@ $w{{ loop.index0 }} = hyprctl hyprpaper wallpaper ",~/Pictures/Wallpapers/{{ wal
 
 # Switch workspaces with mainMod + [0-9]
 {% for i in range(1, 11) %}
-bind = $mainMod, {{ i }}, workspace, {{ i % 10 }}
-bind = $mainMod, {{ i }}, exec, $w{{ (i - 1) % (wallpapers | length) }}
+bind = $mainMod, {{ i % 10 }}, workspace, {{ i }}
+bind = $mainMod, {{ i % 10 }}, exec, $w{{ (i - 1) % (wallpapers | length) }}
 {% endfor %}
 
 # Move active window to a workspace with mainMod + SHIFT + [0-9]
