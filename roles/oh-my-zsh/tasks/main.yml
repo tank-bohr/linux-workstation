@@ -31,6 +31,7 @@
   template:
     src: .zshrc.j2
     dest: "{{ home_dir }}/.zshrc"
+    backup: true
 
 - name: Change user shell to zsh
   user:
