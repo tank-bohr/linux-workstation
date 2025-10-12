@@ -1,5 +1,5 @@
 ---
 - name: Install the package
-  ansible.builtin.command: yay --sync --noconfirm walker
+  ansible.builtin.command: "yay --sync --noconfirm {{ role_name }}"
   args:
-    creates: /usr/bin/walker
+    creates: "/usr/bin/{{ role_name }}"

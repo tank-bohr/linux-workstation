@@ -20,9 +20,6 @@
       - xdg-desktop-portal-hyprland
       - xdg-user-dirs
       - xorg-server-xwayland
-      # Login
-      - greetd
-      - greetd-regreet
       # Screenshots
       - grim
       - slurp

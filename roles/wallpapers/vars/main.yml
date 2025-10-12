@@ -1,2 +1,2 @@
 ---
-wallpapers: "{{ lookup('fileglob', role_path ~ '/files/*.png', wantlist=True) | map('basename') | sort }}"
+wallpapers: "{{ lookup('fileglob', 'roles/wallpapers/files/*.png', wantlist=True) | map('basename') | sort }}"

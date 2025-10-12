@@ -1,12 +1,12 @@
 ---
 - name: Install the package
-  ansible.builtin.command: yay --sync --noconfirm ashell
+  ansible.builtin.command: "yay --sync --noconfirm {{ role_name }}"
   args:
-    creates: /usr/bin/ashell
+    creates: "/usr/bin/{{ role_name }}"
 
 - name: Create config directory
   file:
-    path: "{{ home_dir }}/.config/ashell"
+    path: "{{ config_path | dirname }}"
     state: directory
     owner: "{{ user }}"
     group: "{{ user }}"
@@ -14,7 +14,7 @@
 - name: ashell config
   ansible.builtin.template:
     src: "config.toml.j2"
-    dest: "{{ home_dir }}/.config/ashell/config.toml"
+    dest: "{{ config_path }}"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: '0644'
