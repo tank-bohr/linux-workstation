@@ -3,5 +3,6 @@
 
 # exec-once = $terminal
 # exec-once = nm-applet &
-exec-once = systemctl --user start graphical-session.target
-exec-once = flatpak run ch.protonmail.protonmail-bridge &
+exec-once = uwsm app -- flatpak run ch.protonmail.protonmail-bridge
+exec-once = uwsm app -- elephant
+exec-once = uwsm app -- ashell

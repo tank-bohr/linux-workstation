@@ -3,12 +3,12 @@
 $mainMod = ALT
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-bind = $mainMod, Return, exec, $terminal
+bind = $mainMod, Return, exec, uwsm app -- $terminal
 bind = $mainMod SHIFT, Q, killactive,
 bind = $mainMod, M, exit,
-bind = $mainMod, E, exec, $fileManager
+bind = $mainMod, E, exec, uwsm app -- $fileManager
 bind = $mainMod, V, togglefloating,
-bind = $mainMod, D, exec, $menu
+bind = $mainMod, D, exec, uwsm app -- $menu
 bind = $mainMod, R, resizeactive, 10 -10
 bind = $mainMod SHIFT, R, exec, hyprctl reload
 bind = $mainMod, P, pseudo, # dwindle
@@ -24,17 +24,15 @@ bind = $mainMod, right, movefocus, r
 bind = $mainMod, up, movefocus, u
 bind = $mainMod, down, movefocus, d
 
+{% for wallpaper in wallpapers %}
+$w{{ loop.index0 }} = hyprctl hyprpaper wallpaper ",~/Pictures/Wallpapers/{{ wallpaper }}"
+{% endfor %}
+
 # Switch workspaces with mainMod + [0-9]
-bind = $mainMod, 1, workspace, 1
-bind = $mainMod, 2, workspace, 2
-bind = $mainMod, 3, workspace, 3
-bind = $mainMod, 4, workspace, 4
-bind = $mainMod, 5, workspace, 5
-bind = $mainMod, 6, workspace, 6
-bind = $mainMod, 7, workspace, 7
-bind = $mainMod, 8, workspace, 8
-bind = $mainMod, 9, workspace, 9
-bind = $mainMod, 0, workspace, 10
+{% for i in range(1, 11) %}
+bind = $mainMod, {{ i }}, workspace, {{ i % 10 }}
+bind = $mainMod, {{ i }}, exec, $w{{ (i - 1) % (wallpapers | length) }}
+{% endfor %}
 
 # Move active window to a workspace with mainMod + SHIFT + [0-9]
 bind = $mainMod SHIFT, 1, movetoworkspace, 1
@@ -69,7 +67,7 @@ bindel = ,XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+
 bindel = ,XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-
 
 # Requires playerctl
-bindl = , XF86AudioNext, exec, playerctl next
+bindl = , XF86AudioNext,  exec, playerctl next
 bindl = , XF86AudioPause, exec, playerctl play-pause
-bindl = , XF86AudioPlay, exec, playerctl play-pause
-bindl = , XF86AudioPrev, exec, playerctl previous
+bindl = , XF86AudioPlay,  exec, playerctl play-pause
+bindl = , XF86AudioPrev,  exec, playerctl previous

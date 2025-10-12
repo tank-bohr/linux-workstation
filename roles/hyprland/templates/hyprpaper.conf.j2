@@ -1,0 +1,5 @@
+{% for wallpaper in wallpapers %}
+preload = {{ home_dir }}/Pictures/Wallpapers/{{ wallpaper }}
+{% endfor %}
+wallpaper = {{ home_dir }}/Pictures/Wallpapers/{{ wallpapers | first }}
+splash = true

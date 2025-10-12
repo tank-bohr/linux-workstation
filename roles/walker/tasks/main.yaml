@@ -1,0 +1,5 @@
+---
+- name: Install the package
+  ansible.builtin.command: yay --sync --noconfirm walker
+  args:
+    creates: /usr/bin/walker

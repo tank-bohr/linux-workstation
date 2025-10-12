@@ -2,7 +2,7 @@
 - name: Install hyprland and utilities
   community.general.pacman:
     name:
-      - alacritty
+      - ghostty
       - nautilus
       - egl-wayland
       - hypridle
@@ -14,10 +14,8 @@
       - mako
       - nwg-look
       - power-profiles-daemon
-      - waybar
       - wayland-utils
       - wl-clipboard
-      - wofi
       - xdg-desktop-portal
       - xdg-desktop-portal-hyprland
       - xdg-user-dirs
@@ -48,6 +46,7 @@
     - hyprland
     - hypridle
     - hyprlock
+    - hyprpaper
     - monitors
     - my-programs
     - autostart
